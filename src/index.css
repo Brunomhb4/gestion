@@ -141,19 +141,6 @@
     @apply text-gray-700 hover:text-primary-700 hover:bg-primary-50;
   }
   
-  /* Animation Classes */
-  .animate-fade-in {
-    @apply animate-fade-in;
-  }
-  
-  .animate-slide-in {
-    @apply animate-slide-in;
-  }
-  
-  .animate-slide-up {
-    @apply animate-slide-up;
-  }
-  
   /* Responsive Table */
   @media (max-width: 768px) {
     .table-container {
