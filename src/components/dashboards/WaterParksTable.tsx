@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
-import { useWaterParksStore, WaterPark } from '../../stores/waterParksStore';
-import { ExternalLink } from 'lucide-react';
+import { useWaterParksStore } from '../../stores/waterParksStore';
+import { ExternalLink, Activity } from 'lucide-react';
 
 const WaterParksTable: React.FC = () => {
   const { waterParks } = useWaterParksStore();
@@ -11,40 +11,69 @@ const WaterParksTable: React.FC = () => {
   const basePath = userRole === 'admin' ? '/admin' : '/superadmin';
   
   return (
-    <div className="card overflow-hidden">
-      <div className="mb-4 flex justify-between items-center">
-        <h2 className="text-base sm:text-lg font-semibold text-gray-900">Resumen de Balnearios</h2>
+    <div className="card">
+      <div className="mb-6 flex justify-between items-center">
+        <div>
+          <h2 className="text-xl font-semibold text-gray-900">Resumen de Balnearios</h2>
+          <p className="text-sm text-gray-600 mt-1">Información general de todos los balnearios</p>
+        </div>
+        <div className="flex items-center text-sm text-gray-500">
+          <Activity className="h-4 w-4 mr-1" />
+          {waterParks.length} balnearios
+        </div>
       </div>
       
-      <div className="table-container -mx-6 sm:mx-0">
-        <div className="min-w-full overflow-x-auto">
+      <div className="table-container">
+        <div className="overflow-x-auto">
           <table className="table">
             <thead className="table-header">
               <tr>
                 <th className="table-header-cell">Nombre del Balneario</th>
                 <th className="table-header-cell">Tickets Activos</th>
-                <th className="table-header-cell hidden sm:table-cell">Tickets Vendidos</th>
+                <th className="table-header-cell hidden md:table-cell">Tickets Vendidos</th>
+                <th className="table-header-cell hidden lg:table-cell">Ingresos</th>
                 <th className="table-header-cell">Acciones</th>
               </tr>
             </thead>
             <tbody className="table-body">
-              {waterParks.map((park) => (
-                <tr key={park.id} className="hover:bg-gray-50 transition-colors">
-                  <td className="table-body-cell font-medium text-gray-900">{park.name}</td>
+              {waterParks.map((park, index) => (
+                <tr 
+                  key={park.id} 
+                  className="table-row animate-slide-up"
+                  style={{ animationDelay: `${index * 50}ms` }}
+                >
                   <td className="table-body-cell">
-                    <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      {park.activeTickets}
+                    <div className="flex items-center">
+                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-medium text-sm mr-3">
+                        {park.name.charAt(0)}
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900">{park.name}</div>
+                        <div className="text-xs text-gray-500">ID: {park.id}</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="table-body-cell">
+                    <span className="badge badge-primary">
+                      {park.activeTickets.toLocaleString()}
                     </span>
                   </td>
-                  <td className="table-body-cell hidden sm:table-cell">
-                    {park.soldTickets}
+                  <td className="table-body-cell hidden md:table-cell">
+                    <span className="badge badge-success">
+                      {park.soldTickets.toLocaleString()}
+                    </span>
+                  </td>
+                  <td className="table-body-cell hidden lg:table-cell">
+                    <span className="font-semibold text-green-600">
+                      ${park.totalRevenue.toLocaleString()}
+                    </span>
                   </td>
                   <td className="table-body-cell">
                     <Link
                       to={`${basePath}/waterpark/${park.id}`}
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800"
+                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors duration-200"
                     >
-                      <span className="mr-1 text-sm">Ver detalles</span>
+                      <span className="mr-1">Ver detalles</span>
                       <ExternalLink className="h-4 w-4" />
                     </Link>
                   </td>

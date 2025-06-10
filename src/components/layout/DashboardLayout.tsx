@@ -19,26 +19,24 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
       {/* Mobile sidebar backdrop */}
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-20 bg-gray-900 bg-opacity-50 lg:hidden"
+          className="mobile-sidebar-backdrop"
           onClick={() => setIsSidebarOpen(false)}
-        ></div>
+        />
       )}
 
       {/* Sidebar */}
-      <div 
-        className={`fixed lg:relative z-30 transform transition-transform duration-300 ease-in-out ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-        } lg:translate-x-0`}
-      >
+      <div className={`mobile-sidebar ${isSidebarOpen ? 'mobile-sidebar-open' : 'mobile-sidebar-closed'}`}>
         <Sidebar onClose={() => setIsSidebarOpen(false)} />
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex flex-col overflow-hidden">
+      <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <Header title={title} toggleSidebar={toggleSidebar} />
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6">
+        <main className="flex-1 overflow-y-auto p-4 lg:p-6 custom-scrollbar">
           <div className="container mx-auto max-w-7xl">
-            {children}
+            <div className="animate-fade-in">
+              {children}
+            </div>
           </div>
         </main>
       </div>
