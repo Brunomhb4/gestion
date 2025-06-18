@@ -26,7 +26,7 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
 
   return (
     <div className="card h-80">
-      <h3 className="text-lg font-medium text-gray-900 mb-4">Ventas Diarias</h3>
+      <h3 className="text-lg font-medium text-gray-900 mb-4">Ventas Semanales</h3>
       
       <ResponsiveContainer width="100%" height="85%">
         <AreaChart
