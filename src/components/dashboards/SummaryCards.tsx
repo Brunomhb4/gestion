@@ -16,6 +16,26 @@ const SummaryCards: React.FC = () => {
       title: 'Tickets Activos',
       value: totalActiveTickets.toLocaleString(),
       icon: Ticket,
+      gradient: 'from-navy-500 to-navy-600',
+      bgGradient: 'from-navy-50 to-blue-100',
+      borderColor: 'border-navy-200',
+      textColor: 'text-navy-900',
+      subTextColor: 'text-navy-700'
+    },
+    {
+      title: 'Ingresos Totales',
+      value: `$${totalRevenue.toLocaleString()}`,
+      icon: DollarSign,
+      gradient: 'from-sage-500 to-sage-600',
+      bgGradient: 'from-sage-50 to-sage-100',
+      borderColor: 'border-sage-200',
+      textColor: 'text-sage-900',
+      subTextColor: 'text-sage-700'
+    },
+    {
+      title: 'Total Balnearios',
+      value: totalWaterParks.toString(),
+      icon: Store,
       gradient: 'from-blue-500 to-blue-600',
       bgGradient: 'from-blue-50 to-blue-100',
       borderColor: 'border-blue-200',
@@ -23,34 +43,14 @@ const SummaryCards: React.FC = () => {
       subTextColor: 'text-blue-700'
     },
     {
-      title: 'Ingresos Totales',
-      value: `$${totalRevenue.toLocaleString()}`,
-      icon: DollarSign,
-      gradient: 'from-green-500 to-green-600',
-      bgGradient: 'from-green-50 to-green-100',
-      borderColor: 'border-green-200',
-      textColor: 'text-green-900',
-      subTextColor: 'text-green-700'
-    },
-    {
-      title: 'Total Balnearios',
-      value: totalWaterParks.toString(),
-      icon: Store,
-      gradient: 'from-purple-500 to-purple-600',
-      bgGradient: 'from-purple-50 to-purple-100',
-      borderColor: 'border-purple-200',
-      textColor: 'text-purple-900',
-      subTextColor: 'text-purple-700'
-    },
-    {
       title: 'Tickets Vendidos',
       value: totalSoldTickets.toLocaleString(),
       icon: TrendingUp,
-      gradient: 'from-orange-500 to-orange-600',
-      bgGradient: 'from-orange-50 to-orange-100',
-      borderColor: 'border-orange-200',
-      textColor: 'text-orange-900',
-      subTextColor: 'text-orange-700'
+      gradient: 'from-navy-500 to-sage-600',
+      bgGradient: 'from-blue-50 to-sage-100',
+      borderColor: 'border-sage-200',
+      textColor: 'text-navy-900',
+      subTextColor: 'text-sage-700'
     }
   ];
   

@@ -14,10 +14,10 @@ const WaterParksTable: React.FC = () => {
     <div className="card">
       <div className="mb-6 flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-semibold text-gray-900">Resumen de Balnearios</h2>
-          <p className="text-sm text-gray-600 mt-1">Información general de todos los balnearios</p>
+          <h2 className="text-xl font-semibold text-navy-900">Resumen de Balnearios</h2>
+          <p className="text-sm text-sage-600 mt-1">Información general de todos los balnearios</p>
         </div>
-        <div className="flex items-center text-sm text-gray-500">
+        <div className="flex items-center text-sm text-sage-500">
           <Activity className="h-4 w-4 mr-1" />
           {waterParks.length} balnearios
         </div>
@@ -44,12 +44,12 @@ const WaterParksTable: React.FC = () => {
                 >
                   <td className="table-body-cell">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center text-white font-medium text-sm mr-3">
+                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-navy-500 to-navy-600 flex items-center justify-center text-white font-medium text-sm mr-3">
                         {park.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-semibold text-gray-900">{park.name}</div>
-                        <div className="text-xs text-gray-500">ID: {park.id}</div>
+                        <div className="font-semibold text-navy-900">{park.name}</div>
+                        <div className="text-xs text-sage-500">ID: {park.id}</div>
                       </div>
                     </div>
                   </td>
@@ -64,14 +64,14 @@ const WaterParksTable: React.FC = () => {
                     </span>
                   </td>
                   <td className="table-body-cell hidden lg:table-cell">
-                    <span className="font-semibold text-green-600">
+                    <span className="font-semibold text-sage-600">
                       ${park.totalRevenue.toLocaleString()}
                     </span>
                   </td>
                   <td className="table-body-cell">
                     <Link
                       to={`${basePath}/waterpark/${park.id}`}
-                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-primary-600 hover:text-primary-700 hover:bg-primary-50 rounded-lg transition-colors duration-200"
+                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-navy-600 hover:text-navy-700 hover:bg-navy-50 rounded-lg transition-colors duration-200"
                     >
                       <span className="mr-1">Ver detalles</span>
                       <ExternalLink className="h-4 w-4" />

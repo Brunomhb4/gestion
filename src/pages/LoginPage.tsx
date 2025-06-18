@@ -65,17 +65,17 @@ const LoginPage: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary-50 via-white to-secondary-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sage-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <div className="flex justify-center">
-          <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl shadow-lg">
+          <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-navy-500 to-navy-600 rounded-2xl shadow-lg">
             <Waves className="h-8 w-8 text-white" />
           </div>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+        <h2 className="mt-6 text-center text-3xl font-bold text-navy-900">
           Panel de Administración
         </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
+        <p className="mt-2 text-center text-sm text-sage-600">
           Gestión integral de balnearios
         </p>
       </div>
@@ -96,7 +96,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <AtSign className="h-5 w-5 text-gray-400" />
+                  <AtSign className="h-5 w-5 text-sage-400" />
                 </div>
                 <input
                   id="email"
@@ -117,7 +117,7 @@ const LoginPage: React.FC = () => {
               </label>
               <div className="relative">
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-gray-400" />
+                  <Lock className="h-5 w-5 text-sage-400" />
                 </div>
                 <input
                   id="password"
@@ -135,9 +135,9 @@ const LoginPage: React.FC = () => {
                   className="absolute inset-y-0 right-0 pr-3 flex items-center"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <EyeOff className="h-5 w-5 text-sage-400 hover:text-sage-600" />
                   ) : (
-                    <Eye className="h-5 w-5 text-gray-400 hover:text-gray-600" />
+                    <Eye className="h-5 w-5 text-sage-400 hover:text-sage-600" />
                   )}
                 </button>
               </div>
@@ -164,10 +164,10 @@ const LoginPage: React.FC = () => {
           <div className="mt-8">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-gray-300"></div>
+                <div className="w-full border-t border-sage-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-gray-500 font-medium">
+                <span className="px-2 bg-white text-sage-500 font-medium">
                   Cuentas de demostración
                 </span>
               </div>
@@ -178,12 +178,12 @@ const LoginPage: React.FC = () => {
                 <button
                   key={account.label}
                   onClick={() => setDemoAccount(account.email, account.password)}
-                  className="w-full text-left px-4 py-3 border border-gray-200 rounded-lg shadow-sm text-sm bg-white hover:bg-gray-50 hover:border-primary-300 transition-all duration-200 group"
+                  className="w-full text-left px-4 py-3 border border-sage-200 rounded-lg shadow-sm text-sm bg-white hover:bg-blue-50 hover:border-navy-300 transition-all duration-200 group"
                 >
-                  <div className="font-medium text-gray-900 group-hover:text-primary-700">
+                  <div className="font-medium text-navy-900 group-hover:text-navy-700">
                     {account.label}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div className="text-xs text-sage-500 mt-1">
                     {account.description}
                   </div>
                 </button>

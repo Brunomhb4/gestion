@@ -23,7 +23,7 @@ const CheckersTable: React.FC<CheckersTableProps> = ({
   return (
     <div className="card">
       <div className="mb-4">
-        <h3 className="text-lg font-medium text-gray-900">Checadores</h3>
+        <h3 className="text-lg font-medium text-navy-900">Checadores</h3>
       </div>
       
       <div className="table-container">
@@ -38,11 +38,11 @@ const CheckersTable: React.FC<CheckersTableProps> = ({
           </thead>
           <tbody className="table-body">
             {checkers.map((checker) => (
-              <tr key={checker.id} className="hover:bg-gray-50 transition-colors">
-                <td className="table-body-cell font-medium text-gray-900">{checker.name}</td>
-                <td className="table-body-cell">{checker.email}</td>
+              <tr key={checker.id} className="hover:bg-blue-50 transition-colors">
+                <td className="table-body-cell font-medium text-navy-900">{checker.name}</td>
+                <td className="table-body-cell text-sage-700">{checker.email}</td>
                 <td className="table-body-cell">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sage-100 text-sage-800">
                     {checker.soldTickets}
                   </span>
                 </td>
@@ -51,7 +51,7 @@ const CheckersTable: React.FC<CheckersTableProps> = ({
                     <div className="flex space-x-2">
                       <button 
                         onClick={() => onEdit && onEdit(checker.id)}
-                        className="text-indigo-600 hover:text-indigo-900 transition-colors"
+                        className="text-navy-600 hover:text-navy-900 transition-colors"
                       >
                         Editar
                       </button>

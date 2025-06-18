@@ -36,7 +36,7 @@ const WaterParkDetail: React.FC = () => {
     return (
       <DashboardLayout title="Detalles del Balneario">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy-500"></div>
         </div>
       </DashboardLayout>
     );
@@ -53,36 +53,36 @@ const WaterParkDetail: React.FC = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
           <div className="card">
             <div className="flex items-center">
+              <div className="rounded-full bg-navy-100 p-3 mr-4">
+                <Ticket className="h-6 w-6 text-navy-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-sage-500">Tickets Activos</p>
+                <h3 className="text-lg font-semibold text-navy-900">{waterPark.activeTickets}</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div className="card">
+            <div className="flex items-center">
+              <div className="rounded-full bg-sage-100 p-3 mr-4">
+                <DollarSign className="h-6 w-6 text-sage-600" />
+              </div>
+              <div>
+                <p className="text-sm font-medium text-sage-500">Tickets Vendidos</p>
+                <h3 className="text-lg font-semibold text-navy-900">{waterPark.soldTickets}</h3>
+              </div>
+            </div>
+          </div>
+          
+          <div className="card">
+            <div className="flex items-center">
               <div className="rounded-full bg-blue-100 p-3 mr-4">
-                <Ticket className="h-6 w-6 text-blue-600" />
+                <Printer className="h-6 w-6 text-blue-600" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Tickets Activos</p>
-                <h3 className="text-lg font-semibold">{waterPark.activeTickets}</h3>
-              </div>
-            </div>
-          </div>
-          
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-green-100 p-3 mr-4">
-                <DollarSign className="h-6 w-6 text-green-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-500">Tickets Vendidos</p>
-                <h3 className="text-lg font-semibold">{waterPark.soldTickets}</h3>
-              </div>
-            </div>
-          </div>
-          
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-purple-100 p-3 mr-4">
-                <Printer className="h-6 w-6 text-purple-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-gray-500">Tickets Impresos</p>
-                <h3 className="text-lg font-semibold">{waterPark.printedTickets}</h3>
+                <p className="text-sm font-medium text-sage-500">Tickets Impresos</p>
+                <h3 className="text-lg font-semibold text-navy-900">{waterPark.printedTickets}</h3>
               </div>
             </div>
           </div>
@@ -93,8 +93,8 @@ const WaterParkDetail: React.FC = () => {
                 <TicketX className="h-6 w-6 text-red-600" />
               </div>
               <div>
-                <p className="text-sm font-medium text-gray-500">Tickets Inactivos</p>
-                <h3 className="text-lg font-semibold">{waterPark.inactiveTickets}</h3>
+                <p className="text-sm font-medium text-sage-500">Tickets Inactivos</p>
+                <h3 className="text-lg font-semibold text-navy-900">{waterPark.inactiveTickets}</h3>
               </div>
             </div>
           </div>

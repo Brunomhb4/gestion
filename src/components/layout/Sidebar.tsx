@@ -47,17 +47,17 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="flex items-center">
-          <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg">
+          <div className="flex items-center justify-center w-10 h-10 bg-gradient-to-br from-navy-500 to-navy-600 rounded-lg">
             <Waves className="h-6 w-6 text-white" />
           </div>
           <div className="ml-3">
-            <h1 className="text-xl font-bold text-gray-900">Balnearios</h1>
-            <p className="text-xs text-gray-500">Panel Admin</p>
+            <h1 className="text-xl font-bold text-navy-900">Balnearios</h1>
+            <p className="text-xs text-sage-500">Panel Admin</p>
           </div>
         </div>
         <button 
           onClick={onClose}
-          className="p-2 rounded-lg text-gray-400 hover:text-gray-600 hover:bg-gray-100 lg:hidden transition-colors duration-200"
+          className="p-2 rounded-lg text-sage-400 hover:text-navy-600 hover:bg-blue-100 lg:hidden transition-colors duration-200"
         >
           <X className="h-5 w-5" />
         </button>
@@ -87,7 +87,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
         </ul>
       </nav>
       
-      <div className="p-4 border-t border-gray-200 mt-auto">
+      <div className="p-4 border-t border-blue-200 mt-auto">
         <button 
           onClick={() => {
             logout();
