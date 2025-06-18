@@ -21,9 +21,10 @@ const CheckersTable: React.FC<CheckersTableProps> = ({
   onDelete
 }) => {
   return (
-    <div className="card">
-      <div className="mb-4">
-        <h3 className="text-lg font-medium text-navy-900">Checadores</h3>
+    <div className="card floating-card">
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold text-navy-900">Checadores</h3>
+        <p className="text-sm text-sage-600 mt-1">Personal encargado de la venta de tickets</p>
       </div>
       
       <div className="table-container">
@@ -37,27 +38,38 @@ const CheckersTable: React.FC<CheckersTableProps> = ({
             </tr>
           </thead>
           <tbody className="table-body">
-            {checkers.map((checker) => (
-              <tr key={checker.id} className="hover:bg-blue-50 transition-colors">
-                <td className="table-body-cell font-medium text-navy-900">{checker.name}</td>
+            {checkers.map((checker, index) => (
+              <tr 
+                key={checker.id} 
+                className="table-row animate-slide-up"
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                <td className="table-body-cell">
+                  <div className="flex items-center">
+                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-navy-500 to-sage-500 flex items-center justify-center text-white font-semibold text-sm mr-4 shadow-sm">
+                      {checker.name.charAt(0).toUpperCase()}
+                    </div>
+                    <span className="font-semibold text-navy-900">{checker.name}</span>
+                  </div>
+                </td>
                 <td className="table-body-cell text-sage-700">{checker.email}</td>
                 <td className="table-body-cell">
-                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-sage-100 text-sage-800">
-                    {checker.soldTickets}
+                  <span className="badge badge-secondary font-semibold">
+                    {checker.soldTickets.toLocaleString()}
                   </span>
                 </td>
                 {showActions && (
                   <td className="table-body-cell">
-                    <div className="flex space-x-2">
+                    <div className="flex space-x-3">
                       <button 
                         onClick={() => onEdit && onEdit(checker.id)}
-                        className="text-navy-600 hover:text-navy-900 transition-colors"
+                        className="text-navy-600 hover:text-navy-900 transition-colors font-medium"
                       >
                         Editar
                       </button>
                       <button 
                         onClick={() => onDelete && onDelete(checker.id)}
-                        className="text-red-600 hover:text-red-900 transition-colors"
+                        className="text-red-600 hover:text-red-900 transition-colors font-medium"
                       >
                         Eliminar
                       </button>

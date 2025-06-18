@@ -65,37 +65,37 @@ const LoginPage: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-sage-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sage-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center">
-          <div className="flex items-center justify-center w-16 h-16 bg-gradient-to-br from-navy-500 to-navy-600 rounded-2xl shadow-lg">
-            <Waves className="h-8 w-8 text-white" />
+        <div className="flex justify-center mb-8">
+          <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-navy-600 to-sage-600 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
+            <Waves className="h-10 w-10 text-white" />
           </div>
         </div>
-        <h2 className="mt-6 text-center text-3xl font-bold text-navy-900">
+        <h2 className="text-center text-4xl font-bold text-navy-900 mb-3">
           Panel de Administración
         </h2>
-        <p className="mt-2 text-center text-sm text-sage-600">
+        <p className="text-center text-base text-sage-600 font-medium">
           Gestión integral de balnearios
         </p>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="card shadow-xl">
+      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="card shadow-2xl animate-scale-in">
           {error && (
-            <div className="mb-6 bg-red-50 border border-red-200 p-4 rounded-lg flex items-start animate-slide-in">
+            <div className="mb-8 bg-red-50/80 backdrop-blur-sm border border-red-200/50 p-5 rounded-xl flex items-start animate-slide-in">
               <AlertOctagon className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
-              <p className="text-sm text-red-700">{error}</p>
+              <p className="text-sm text-red-700 font-medium">{error}</p>
             </div>
           )}
           
-          <form className="space-y-6" onSubmit={handleSubmit}>
+          <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="label">
                 Correo electrónico
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <AtSign className="h-5 w-5 text-sage-400" />
                 </div>
                 <input
@@ -105,7 +105,7 @@ const LoginPage: React.FC = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input pl-10"
+                  className="input pl-12"
                   placeholder="tu@email.com"
                 />
               </div>
@@ -116,7 +116,7 @@ const LoginPage: React.FC = () => {
                 Contraseña
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-sage-400" />
                 </div>
                 <input
@@ -126,13 +126,13 @@ const LoginPage: React.FC = () => {
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="input pl-10 pr-10"
+                  className="input pl-12 pr-12"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                  className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-navy-50 rounded-r-xl transition-colors duration-300"
                 >
                   {showPassword ? (
                     <EyeOff className="h-5 w-5 text-sage-400 hover:text-sage-600" />
@@ -147,11 +147,11 @@ const LoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary w-full flex justify-center py-3 text-base"
+                className="btn btn-primary w-full flex justify-center py-4 text-base font-semibold"
               >
                 {loading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
                     Iniciando sesión...
                   </div>
                 ) : (
@@ -161,29 +161,29 @@ const LoginPage: React.FC = () => {
             </div>
           </form>
           
-          <div className="mt-8">
+          <div className="mt-10">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-sage-300"></div>
+                <div className="w-full border-t border-sage-200/50"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-2 bg-white text-sage-500 font-medium">
+                <span className="px-4 bg-white text-sage-600 font-medium">
                   Cuentas de demostración
                 </span>
               </div>
             </div>
 
-            <div className="mt-6 space-y-3">
+            <div className="mt-8 space-y-4">
               {demoAccounts.map((account) => (
                 <button
                   key={account.label}
                   onClick={() => setDemoAccount(account.email, account.password)}
-                  className="w-full text-left px-4 py-3 border border-sage-200 rounded-lg shadow-sm text-sm bg-white hover:bg-blue-50 hover:border-navy-300 transition-all duration-200 group"
+                  className="w-full text-left px-6 py-4 border border-sage-200/50 rounded-xl shadow-sm text-sm bg-white/50 backdrop-blur-sm hover:bg-sky-50/50 hover:border-navy-300/50 transition-all duration-300 group hover:shadow-md"
                 >
-                  <div className="font-medium text-navy-900 group-hover:text-navy-700">
+                  <div className="font-semibold text-navy-900 group-hover:text-navy-700 mb-1">
                     {account.label}
                   </div>
-                  <div className="text-xs text-sage-500 mt-1">
+                  <div className="text-xs text-sage-600">
                     {account.description}
                   </div>
                 </button>

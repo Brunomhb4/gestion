@@ -11,14 +11,14 @@ const WaterParksTable: React.FC = () => {
   const basePath = userRole === 'admin' ? '/admin' : '/superadmin';
   
   return (
-    <div className="card">
-      <div className="mb-6 flex justify-between items-center">
+    <div className="card floating-card">
+      <div className="mb-8 flex justify-between items-center">
         <div>
-          <h2 className="text-xl font-semibold text-navy-900">Resumen de Balnearios</h2>
-          <p className="text-sm text-sage-600 mt-1">Información general de todos los balnearios</p>
+          <h2 className="text-2xl font-semibold text-navy-900 mb-2">Resumen de Balnearios</h2>
+          <p className="text-sm text-sage-600">Información general de todos los balnearios</p>
         </div>
-        <div className="flex items-center text-sm text-sage-500">
-          <Activity className="h-4 w-4 mr-1" />
+        <div className="flex items-center text-sm text-sage-600 bg-sage-50/50 px-4 py-2 rounded-xl border border-sage-200/50">
+          <Activity className="h-4 w-4 mr-2" />
           {waterParks.length} balnearios
         </div>
       </div>
@@ -44,36 +44,36 @@ const WaterParksTable: React.FC = () => {
                 >
                   <td className="table-body-cell">
                     <div className="flex items-center">
-                      <div className="h-10 w-10 rounded-lg bg-gradient-to-br from-navy-500 to-navy-600 flex items-center justify-center text-white font-medium text-sm mr-3">
+                      <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-navy-600 to-sage-600 flex items-center justify-center text-white font-semibold text-sm mr-4 shadow-sm">
                         {park.name.charAt(0)}
                       </div>
                       <div>
-                        <div className="font-semibold text-navy-900">{park.name}</div>
-                        <div className="text-xs text-sage-500">ID: {park.id}</div>
+                        <div className="font-semibold text-navy-900 text-base">{park.name}</div>
+                        <div className="text-xs text-sage-500 mt-1">ID: {park.id}</div>
                       </div>
                     </div>
                   </td>
                   <td className="table-body-cell">
-                    <span className="badge badge-primary">
+                    <span className="badge badge-primary font-semibold">
                       {park.activeTickets.toLocaleString()}
                     </span>
                   </td>
                   <td className="table-body-cell hidden md:table-cell">
-                    <span className="badge badge-success">
+                    <span className="badge badge-success font-semibold">
                       {park.soldTickets.toLocaleString()}
                     </span>
                   </td>
                   <td className="table-body-cell hidden lg:table-cell">
-                    <span className="font-semibold text-sage-600">
+                    <span className="font-bold text-sage-700 text-base">
                       ${park.totalRevenue.toLocaleString()}
                     </span>
                   </td>
                   <td className="table-body-cell">
                     <Link
                       to={`${basePath}/waterpark/${park.id}`}
-                      className="inline-flex items-center px-3 py-1.5 text-sm font-medium text-navy-600 hover:text-navy-700 hover:bg-navy-50 rounded-lg transition-colors duration-200"
+                      className="inline-flex items-center px-4 py-2 text-sm font-medium text-navy-700 hover:text-navy-900 hover:bg-navy-50 rounded-xl transition-all duration-300 hover:shadow-sm"
                     >
-                      <span className="mr-1">Ver detalles</span>
+                      <span className="mr-2">Ver detalles</span>
                       <ExternalLink className="h-4 w-4" />
                     </Link>
                   </td>

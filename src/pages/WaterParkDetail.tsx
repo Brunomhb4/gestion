@@ -46,62 +46,70 @@ const WaterParkDetail: React.FC = () => {
   const dailyStats = fetchDailyStats(waterPark.id);
   const monthlyStats = fetchMonthlyStats(waterPark.id);
   
+  const statsCards = [
+    {
+      title: 'Tickets Activos',
+      value: waterPark.activeTickets,
+      icon: Ticket,
+      bgColor: 'bg-navy-100/80',
+      iconColor: 'text-navy-600',
+      textColor: 'text-navy-900'
+    },
+    {
+      title: 'Tickets Vendidos',
+      value: waterPark.soldTickets,
+      icon: DollarSign,
+      bgColor: 'bg-sage-100/80',
+      iconColor: 'text-sage-600',
+      textColor: 'text-sage-900'
+    },
+    {
+      title: 'Tickets Impresos',
+      value: waterPark.printedTickets,
+      icon: Printer,
+      bgColor: 'bg-sky-100/80',
+      iconColor: 'text-sky-600',
+      textColor: 'text-sky-900'
+    },
+    {
+      title: 'Tickets Inactivos',
+      value: waterPark.inactiveTickets,
+      icon: TicketX,
+      bgColor: 'bg-red-100/80',
+      iconColor: 'text-red-600',
+      textColor: 'text-red-900'
+    }
+  ];
+  
   return (
     <DashboardLayout title={waterPark.name}>
-      <div className="fade-in">
+      <div className="animate-fade-in">
         {/* Summary Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-navy-100 p-3 mr-4">
-                <Ticket className="h-6 w-6 text-navy-600" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          {statsCards.map((stat, index) => {
+            const Icon = stat.icon;
+            return (
+              <div 
+                key={stat.title}
+                className="card-compact floating-card animate-slide-up"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="flex items-center">
+                  <div className={`rounded-2xl ${stat.bgColor} p-4 mr-5 shadow-sm`}>
+                    <Icon className={`h-6 w-6 ${stat.iconColor}`} />
+                  </div>
+                  <div>
+                    <p className="text-sm font-medium text-sage-600 mb-1">{stat.title}</p>
+                    <h3 className={`text-xl font-bold ${stat.textColor}`}>{stat.value.toLocaleString()}</h3>
+                  </div>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-medium text-sage-500">Tickets Activos</p>
-                <h3 className="text-lg font-semibold text-navy-900">{waterPark.activeTickets}</h3>
-              </div>
-            </div>
-          </div>
-          
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-sage-100 p-3 mr-4">
-                <DollarSign className="h-6 w-6 text-sage-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-sage-500">Tickets Vendidos</p>
-                <h3 className="text-lg font-semibold text-navy-900">{waterPark.soldTickets}</h3>
-              </div>
-            </div>
-          </div>
-          
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-blue-100 p-3 mr-4">
-                <Printer className="h-6 w-6 text-blue-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-sage-500">Tickets Impresos</p>
-                <h3 className="text-lg font-semibold text-navy-900">{waterPark.printedTickets}</h3>
-              </div>
-            </div>
-          </div>
-          
-          <div className="card">
-            <div className="flex items-center">
-              <div className="rounded-full bg-red-100 p-3 mr-4">
-                <TicketX className="h-6 w-6 text-red-600" />
-              </div>
-              <div>
-                <p className="text-sm font-medium text-sage-500">Tickets Inactivos</p>
-                <h3 className="text-lg font-semibold text-navy-900">{waterPark.inactiveTickets}</h3>
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
         
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
           <DailyChart data={dailyStats} />
           <MonthlyChart data={monthlyStats} />
         </div>
