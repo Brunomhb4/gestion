@@ -36,7 +36,7 @@ const WaterParkDetail: React.FC = () => {
     return (
       <DashboardLayout title="Detalles del Balneario">
         <div className="flex justify-center items-center h-64">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-navy-500"></div>
+          <div className="animate-spin rounded-full h-16 w-16 border-b-4 border-midnight-blue"></div>
         </div>
       </DashboardLayout>
     );
@@ -51,33 +51,37 @@ const WaterParkDetail: React.FC = () => {
       title: 'Tickets Activos',
       value: waterPark.activeTickets,
       icon: Ticket,
-      bgColor: 'bg-navy-100/80',
-      iconColor: 'text-navy-600',
-      textColor: 'text-navy-900'
+      bgColor: 'bg-gradient-to-br from-midnight-blue/10 to-navy-blue/20',
+      iconColor: 'text-midnight-blue',
+      textColor: 'text-deep-navy',
+      borderColor: 'border-midnight-blue/20'
     },
     {
       title: 'Tickets Vendidos',
       value: waterPark.soldTickets,
       icon: DollarSign,
-      bgColor: 'bg-sage-100/80',
-      iconColor: 'text-sage-600',
-      textColor: 'text-sage-900'
+      bgColor: 'bg-gradient-to-br from-sky-muted/10 to-blue-soft/20',
+      iconColor: 'text-sky-muted',
+      textColor: 'text-deep-navy',
+      borderColor: 'border-sky-muted/20'
     },
     {
       title: 'Tickets Impresos',
       value: waterPark.printedTickets,
       icon: Printer,
-      bgColor: 'bg-sky-100/80',
-      iconColor: 'text-sky-600',
-      textColor: 'text-sky-900'
+      bgColor: 'bg-gradient-to-br from-blue-soft/10 to-sky-light/30',
+      iconColor: 'text-blue-soft',
+      textColor: 'text-deep-navy',
+      borderColor: 'border-blue-soft/20'
     },
     {
       title: 'Tickets Inactivos',
       value: waterPark.inactiveTickets,
       icon: TicketX,
-      bgColor: 'bg-red-100/80',
-      iconColor: 'text-red-600',
-      textColor: 'text-red-900'
+      bgColor: 'bg-gradient-to-br from-error-100/80 to-error-200/60',
+      iconColor: 'text-error-600',
+      textColor: 'text-deep-navy',
+      borderColor: 'border-error-200/40'
     }
   ];
   
@@ -85,22 +89,22 @@ const WaterParkDetail: React.FC = () => {
     <DashboardLayout title={waterPark.name}>
       <div className="animate-fade-in">
         {/* Summary Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10">
           {statsCards.map((stat, index) => {
             const Icon = stat.icon;
             return (
               <div 
                 key={stat.title}
-                className="card-compact floating-card animate-slide-up"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className={`card-compact ${stat.bgColor} border-2 ${stat.borderColor} floating-card animate-slide-up hover:scale-105`}
+                style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-center">
-                  <div className={`rounded-2xl ${stat.bgColor} p-4 mr-5 shadow-sm`}>
-                    <Icon className={`h-6 w-6 ${stat.iconColor}`} />
+                  <div className={`rounded-3xl bg-white/80 backdrop-blur-sm p-5 mr-6 shadow-soft border border-white/40`}>
+                    <Icon className={`h-7 w-7 ${stat.iconColor}`} />
                   </div>
                   <div>
-                    <p className="text-sm font-medium text-sage-600 mb-1">{stat.title}</p>
-                    <h3 className={`text-xl font-bold ${stat.textColor}`}>{stat.value.toLocaleString()}</h3>
+                    <p className="text-sm font-semibold text-sky-muted mb-2">{stat.title}</p>
+                    <h3 className={`text-2xl font-bold ${stat.textColor}`}>{stat.value.toLocaleString()}</h3>
                   </div>
                 </div>
               </div>
@@ -109,7 +113,7 @@ const WaterParkDetail: React.FC = () => {
         </div>
         
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-10">
           <DailyChart data={dailyStats} />
           <MonthlyChart data={monthlyStats} />
         </div>

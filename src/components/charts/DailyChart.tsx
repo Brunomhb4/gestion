@@ -25,8 +25,8 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
   }));
 
   return (
-    <div className="card h-80 floating-card">
-      <h3 className="text-xl font-semibold text-navy-900 mb-6">Ventas Semanales</h3>
+    <div className="card h-96 floating-card">
+      <h3 className="text-2xl font-bold gradient-text mb-8">Ventas Semanales</h3>
       
       <ResponsiveContainer width="100%" height="85%">
         <AreaChart
@@ -35,44 +35,45 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
         >
           <defs>
             <linearGradient id="colorTickets" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#291024" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#291024" stopOpacity={0.1} />
+              <stop offset="5%" stopColor="#1B3B6F" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#1B3B6F" stopOpacity={0.1} />
             </linearGradient>
             <linearGradient id="colorRevenue" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#638363" stopOpacity={0.8} />
-              <stop offset="95%" stopColor="#638363" stopOpacity={0.1} />
+              <stop offset="5%" stopColor="#5483B3" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#5483B3" stopOpacity={0.1} />
             </linearGradient>
           </defs>
           <XAxis 
             dataKey="formattedDate" 
-            tick={{ fontSize: 12, fill: '#352859' }}
+            tick={{ fontSize: 12, fill: '#1B3B6F', fontWeight: 600 }}
             axisLine={false}
             tickLine={false}
           />
           <YAxis 
             yAxisId="left"
             orientation="left"
-            tick={{ fontSize: 12, fill: '#352859' }}
+            tick={{ fontSize: 12, fill: '#1B3B6F', fontWeight: 600 }}
             axisLine={false}
             tickLine={false}
           />
           <YAxis 
             yAxisId="right"
             orientation="right"
-            tick={{ fontSize: 12, fill: '#352859' }}
+            tick={{ fontSize: 12, fill: '#1B3B6F', fontWeight: 600 }}
             domain={[0, 'dataMax + 5000']}
             axisLine={false}
             tickLine={false}
           />
-          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#7DA0CA" opacity={0.3} />
+          <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#7DA0CA" opacity={0.4} />
           <Tooltip 
             contentStyle={{ 
               backgroundColor: 'rgba(255, 255, 255, 0.95)', 
-              border: '1px solid #7DA0CA',
-              borderRadius: '12px',
-              color: '#291024',
-              backdropFilter: 'blur(8px)',
-              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+              border: '2px solid #C1E8FF',
+              borderRadius: '16px',
+              color: '#021024',
+              backdropFilter: 'blur(12px)',
+              boxShadow: '0 10px 40px rgba(2, 16, 36, 0.15)',
+              fontWeight: 600
             }}
           />
           <Area 
@@ -80,7 +81,7 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
             type="monotone" 
             dataKey="tickets" 
             name="Tickets"
-            stroke="#291024" 
+            stroke="#1B3B6F" 
             strokeWidth={3}
             fillOpacity={1} 
             fill="url(#colorTickets)" 
@@ -90,7 +91,7 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
             type="monotone" 
             dataKey="revenue" 
             name="Ingresos ($)"
-            stroke="#638363" 
+            stroke="#5483B3" 
             strokeWidth={3}
             fillOpacity={1} 
             fill="url(#colorRevenue)" 

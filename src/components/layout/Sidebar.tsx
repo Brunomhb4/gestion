@@ -47,24 +47,24 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
     <aside className="sidebar">
       <div className="sidebar-header">
         <div className="flex items-center">
-          <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-navy-600 to-sage-600 rounded-2xl shadow-lg">
-            <Waves className="h-6 w-6 text-white" />
+          <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-midnight-blue via-navy-blue to-sky-muted rounded-3xl shadow-large animate-float">
+            <Waves className="h-7 w-7 text-white" />
           </div>
-          <div className="ml-4">
-            <h1 className="text-xl font-bold text-navy-900">Balnearios</h1>
-            <p className="text-xs text-sage-600 font-medium">Panel Admin</p>
+          <div className="ml-5">
+            <h1 className="text-xl font-bold gradient-text">Balnearios</h1>
+            <p className="text-xs text-sky-muted font-semibold">Panel Admin</p>
           </div>
         </div>
         <button 
           onClick={onClose}
-          className="p-2 rounded-xl text-sage-400 hover:text-navy-600 hover:bg-navy-50 lg:hidden transition-all duration-300"
+          className="p-2 rounded-2xl text-sky-muted hover:text-midnight-blue hover:bg-sky-light/30 lg:hidden transition-all duration-300 hover:scale-105"
         >
-          <X className="h-5 w-5" />
+          <X className="h-6 w-6" />
         </button>
       </div>
       
       <nav className="sidebar-nav custom-scrollbar">
-        <ul className="space-y-1">
+        <ul className="space-y-2">
           {navItems.filter(item => item.show).map((item) => {
             const Icon = item.icon;
             const active = isActive(item.path);
@@ -78,8 +78,8 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
                   }`}
                   onClick={onClose}
                 >
-                  <Icon className="mr-4 h-5 w-5 flex-shrink-0" />
-                  <span className="truncate font-medium">{item.label}</span>
+                  <Icon className="mr-4 h-6 w-6 flex-shrink-0" />
+                  <span className="truncate font-semibold">{item.label}</span>
                 </Link>
               </li>
             );
@@ -87,15 +87,15 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
         </ul>
       </nav>
       
-      <div className="p-6 border-t border-sky-200/50 mt-auto">
+      <div className="p-6 border-t border-sky-light/30 mt-auto bg-gradient-to-r from-sky-light/10 to-transparent">
         <button 
           onClick={() => {
             logout();
             onClose();
           }} 
-          className="w-full flex items-center px-6 py-4 text-sm font-medium text-red-600 rounded-xl hover:bg-red-50 transition-all duration-300 hover:shadow-sm"
+          className="w-full flex items-center px-6 py-4 text-sm font-semibold text-error-600 rounded-2xl hover:bg-error-50/80 transition-all duration-300 hover:shadow-soft hover:scale-105"
         >
-          <LogOut className="mr-4 h-5 w-5" />
+          <LogOut className="mr-4 h-6 w-6" />
           Cerrar sesión
         </button>
       </div>

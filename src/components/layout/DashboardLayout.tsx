@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
   };
 
   return (
-    <div className="flex h-screen bg-blue-50">
+    <div className="flex h-screen bg-gradient-to-br from-sky-light via-white to-blue-soft/20 particle-bg">
       {/* Mobile sidebar backdrop */}
       {isSidebarOpen && (
         <div
@@ -32,7 +32,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <Header title={title} toggleSidebar={toggleSidebar} />
-        <main className="flex-1 overflow-y-auto p-4 lg:p-6 custom-scrollbar">
+        <main className="flex-1 overflow-y-auto p-6 lg:p-8 custom-scrollbar">
           <div className="container mx-auto max-w-7xl">
             <div className="animate-fade-in">
               {children}

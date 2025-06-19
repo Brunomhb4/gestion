@@ -11,32 +11,32 @@ const Header: React.FC<HeaderProps> = ({ title, toggleSidebar }) => {
   const { user } = useAuthStore();
   
   return (
-    <header className="bg-white/80 backdrop-blur-md h-18 px-6 lg:px-8 border-b border-sky-200/50 flex items-center justify-between shadow-sm">
+    <header className="header h-20 px-6 lg:px-8 flex items-center justify-between">
       <div className="flex items-center min-w-0 flex-1">
         <button 
           onClick={toggleSidebar}
-          className="p-3 mr-4 rounded-xl text-navy-600 hover:bg-navy-50 lg:hidden focus:outline-none focus:ring-2 focus:ring-navy-500/20 transition-all duration-300"
+          className="p-3 mr-4 rounded-2xl text-midnight-blue hover:bg-sky-light/30 lg:hidden focus:outline-none focus:ring-2 focus:ring-sky-muted/20 transition-all duration-300 hover:scale-105"
         >
-          <Menu className="h-5 w-5" />
+          <Menu className="h-6 w-6" />
         </button>
         <div className="min-w-0 flex-1">
-          <h1 className="text-xl lg:text-2xl font-semibold text-navy-900 truncate">{title}</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold gradient-text truncate">{title}</h1>
         </div>
       </div>
       
-      <div className="flex items-center space-x-4 lg:space-x-6">
-        <button className="p-3 rounded-xl text-navy-600 hover:bg-navy-50 focus:outline-none focus:ring-2 focus:ring-navy-500/20 transition-all duration-300 relative">
-          <Bell className="h-5 w-5" />
-          <span className="absolute -top-1 -right-1 h-3 w-3 bg-gradient-to-r from-red-500 to-red-600 rounded-full shadow-sm"></span>
+      <div className="flex items-center space-x-6 lg:space-x-8">
+        <button className="p-3 rounded-2xl text-midnight-blue hover:bg-sky-light/30 focus:outline-none focus:ring-2 focus:ring-sky-muted/20 transition-all duration-300 relative hover:scale-105">
+          <Bell className="h-6 w-6" />
+          <span className="absolute -top-1 -right-1 h-4 w-4 bg-gradient-to-r from-error-500 to-error-600 rounded-full shadow-soft animate-pulse"></span>
         </button>
         
         <div className="flex items-center space-x-4">
           <div className="hidden sm:block text-right">
-            <p className="text-sm font-semibold text-navy-900">{user?.name}</p>
-            <p className="text-xs text-sage-600 capitalize">{user?.role}</p>
+            <p className="text-sm font-bold text-deep-navy">{user?.name}</p>
+            <p className="text-xs text-sky-muted capitalize font-medium">{user?.role}</p>
           </div>
-          <div className="h-12 w-12 rounded-2xl bg-gradient-to-br from-navy-600 to-sage-600 text-white flex items-center justify-center font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">
-            {user?.name ? user.name.charAt(0).toUpperCase() : <User className="h-5 w-5" />}
+          <div className="h-14 w-14 rounded-3xl bg-gradient-to-br from-midnight-blue via-navy-blue to-sky-muted text-white flex items-center justify-center font-bold shadow-medium hover:shadow-large transition-all duration-300 hover:scale-110 animate-float">
+            {user?.name ? user.name.charAt(0).toUpperCase() : <User className="h-6 w-6" />}
           </div>
         </div>
       </div>

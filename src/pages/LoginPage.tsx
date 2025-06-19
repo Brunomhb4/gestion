@@ -65,38 +65,38 @@ const LoginPage: React.FC = () => {
   };
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-sage-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-sky-light via-white to-blue-soft/30 particle-bg flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="flex justify-center mb-8">
-          <div className="flex items-center justify-center w-20 h-20 bg-gradient-to-br from-navy-600 to-sage-600 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105">
-            <Waves className="h-10 w-10 text-white" />
+        <div className="flex justify-center mb-10">
+          <div className="flex items-center justify-center w-24 h-24 bg-gradient-to-br from-midnight-blue via-navy-blue to-sky-muted rounded-4xl shadow-large hover:shadow-xl transition-all duration-300 hover:scale-110 animate-float">
+            <Waves className="h-12 w-12 text-white" />
           </div>
         </div>
-        <h2 className="text-center text-4xl font-bold text-navy-900 mb-3">
+        <h2 className="text-center text-5xl font-bold gradient-text mb-4">
           Panel de Administración
         </h2>
-        <p className="text-center text-base text-sage-600 font-medium">
+        <p className="text-center text-lg text-sky-muted font-semibold">
           Gestión integral de balnearios
         </p>
       </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="card shadow-2xl animate-scale-in">
+      <div className="mt-12 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="card shadow-large animate-scale-in">
           {error && (
-            <div className="mb-8 bg-red-50/80 backdrop-blur-sm border border-red-200/50 p-5 rounded-xl flex items-start animate-slide-in">
-              <AlertOctagon className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
-              <p className="text-sm text-red-700 font-medium">{error}</p>
+            <div className="mb-8 bg-error-50/90 backdrop-blur-sm border-2 border-error-200/50 p-6 rounded-2xl flex items-start animate-slide-in">
+              <AlertOctagon className="h-6 w-6 text-error-500 mr-4 mt-0.5 flex-shrink-0" />
+              <p className="text-sm text-error-700 font-semibold">{error}</p>
             </div>
           )}
           
           <form className="space-y-8" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="label">
+              <label htmlFor="email" className="label text-base">
                 Correo electrónico
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <AtSign className="h-5 w-5 text-sage-400" />
+                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                  <AtSign className="h-6 w-6 text-sky-muted" />
                 </div>
                 <input
                   id="email"
@@ -105,19 +105,19 @@ const LoginPage: React.FC = () => {
                   autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input pl-12"
+                  className="input pl-14 text-base"
                   placeholder="tu@email.com"
                 />
               </div>
             </div>
 
             <div>
-              <label htmlFor="password" className="label">
+              <label htmlFor="password" className="label text-base">
                 Contraseña
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                  <Lock className="h-5 w-5 text-sage-400" />
+                <div className="absolute inset-y-0 left-0 pl-5 flex items-center pointer-events-none">
+                  <Lock className="h-6 w-6 text-sky-muted" />
                 </div>
                 <input
                   id="password"
@@ -126,18 +126,18 @@ const LoginPage: React.FC = () => {
                   autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="input pl-12 pr-12"
+                  className="input pl-14 pr-14 text-base"
                   placeholder="••••••••"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute inset-y-0 right-0 pr-4 flex items-center hover:bg-navy-50 rounded-r-xl transition-colors duration-300"
+                  className="absolute inset-y-0 right-0 pr-5 flex items-center hover:bg-sky-light/20 rounded-r-2xl transition-colors duration-300"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5 text-sage-400 hover:text-sage-600" />
+                    <EyeOff className="h-6 w-6 text-sky-muted hover:text-midnight-blue" />
                   ) : (
-                    <Eye className="h-5 w-5 text-sage-400 hover:text-sage-600" />
+                    <Eye className="h-6 w-6 text-sky-muted hover:text-midnight-blue" />
                   )}
                 </button>
               </div>
@@ -147,11 +147,11 @@ const LoginPage: React.FC = () => {
               <button
                 type="submit"
                 disabled={loading}
-                className="btn btn-primary w-full flex justify-center py-4 text-base font-semibold"
+                className="btn btn-primary w-full flex justify-center py-5 text-base font-bold"
               >
                 {loading ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-3"></div>
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-4"></div>
                     Iniciando sesión...
                   </div>
                 ) : (
@@ -161,29 +161,29 @@ const LoginPage: React.FC = () => {
             </div>
           </form>
           
-          <div className="mt-10">
+          <div className="mt-12">
             <div className="relative">
               <div className="absolute inset-0 flex items-center">
-                <div className="w-full border-t border-sage-200/50"></div>
+                <div className="w-full border-t-2 border-sky-light/40"></div>
               </div>
               <div className="relative flex justify-center text-sm">
-                <span className="px-4 bg-white text-sage-600 font-medium">
+                <span className="px-6 bg-white text-sky-muted font-bold text-base">
                   Cuentas de demostración
                 </span>
               </div>
             </div>
 
-            <div className="mt-8 space-y-4">
+            <div className="mt-10 space-y-4">
               {demoAccounts.map((account) => (
                 <button
                   key={account.label}
                   onClick={() => setDemoAccount(account.email, account.password)}
-                  className="w-full text-left px-6 py-4 border border-sage-200/50 rounded-xl shadow-sm text-sm bg-white/50 backdrop-blur-sm hover:bg-sky-50/50 hover:border-navy-300/50 transition-all duration-300 group hover:shadow-md"
+                  className="w-full text-left px-8 py-5 border-2 border-sky-light/40 rounded-2xl shadow-soft text-sm bg-white/60 backdrop-blur-sm hover:bg-sky-light/30 hover:border-sky-muted/40 transition-all duration-300 group hover:shadow-medium hover:scale-102"
                 >
-                  <div className="font-semibold text-navy-900 group-hover:text-navy-700 mb-1">
+                  <div className="font-bold text-midnight-blue group-hover:text-deep-navy mb-2 text-base">
                     {account.label}
                   </div>
-                  <div className="text-xs text-sage-600">
+                  <div className="text-sm text-sky-muted font-medium">
                     {account.description}
                   </div>
                 </button>
