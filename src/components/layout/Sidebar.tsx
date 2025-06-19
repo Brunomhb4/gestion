@@ -73,7 +73,7 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
               <li key={item.path}>
                 <Link 
                   to={item.path}
-                  className={`sidebar-nav-item ${
+                  className={`sidebar-nav-item group ${
                     active ? 'sidebar-nav-item-active' : 'sidebar-nav-item-inactive'
                   }`}
                   onClick={onClose}
