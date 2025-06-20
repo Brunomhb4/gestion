@@ -59,7 +59,7 @@ const SummaryCards: React.FC = () => {
   ];
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8 lg:gap-10 mb-10 lg:mb-12">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mb-6 sm:mb-8 lg:mb-10 xl:mb-12">
       {cards.map((card, index) => {
         const Icon = card.icon;
         return (
@@ -69,14 +69,14 @@ const SummaryCards: React.FC = () => {
             style={{ animationDelay: `${index * 150}ms` }}
           >
             <div className="flex items-center">
-              <div className={`rounded-3xl ${card.iconBg} p-5 shadow-soft border border-white/20 backdrop-blur-sm`}>
-                <Icon className="h-7 w-7 text-midnight-blue" />
+              <div className={`rounded-2xl sm:rounded-3xl ${card.iconBg} p-3 sm:p-4 lg:p-5 shadow-soft border border-white/20 backdrop-blur-sm flex-shrink-0`}>
+                <Icon className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-midnight-blue" />
               </div>
-              <div className="ml-6 flex-1 min-w-0">
-                <p className={`text-sm font-semibold ${card.subTextColor} truncate mb-2`}>
+              <div className="ml-3 sm:ml-4 lg:ml-6 flex-1 min-w-0">
+                <p className={`text-xs sm:text-sm font-semibold ${card.subTextColor} truncate mb-1 sm:mb-2`}>
                   {card.title}
                 </p>
-                <h3 className={`text-2xl font-bold ${card.textColor} truncate`}>
+                <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold ${card.textColor} truncate`}>
                   {card.value}
                 </h3>
               </div>

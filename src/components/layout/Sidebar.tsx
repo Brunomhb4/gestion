@@ -46,25 +46,25 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
   return (
     <aside className="sidebar">
       <div className="sidebar-header">
-        <div className="flex items-center">
-          <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-br from-midnight-blue via-navy-blue to-sky-muted rounded-3xl shadow-large animate-float">
-            <Waves className="h-7 w-7 text-white" />
+        <div className="flex items-center min-w-0 flex-1">
+          <div className="flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 bg-gradient-to-br from-midnight-blue via-navy-blue to-sky-muted rounded-2xl sm:rounded-3xl shadow-large animate-float flex-shrink-0">
+            <Waves className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-white" />
           </div>
-          <div className="ml-5">
-            <h1 className="text-xl font-bold gradient-text">Balnearios</h1>
-            <p className="text-xs text-sky-muted font-semibold">Panel Admin</p>
+          <div className="ml-3 sm:ml-4 lg:ml-5 min-w-0 flex-1">
+            <h1 className="text-base sm:text-lg lg:text-xl font-bold gradient-text truncate">Balnearios</h1>
+            <p className="text-xs font-semibold text-sky-muted truncate">Panel Admin</p>
           </div>
         </div>
         <button 
           onClick={onClose}
-          className="p-2 rounded-2xl text-sky-muted hover:text-midnight-blue hover:bg-sky-light/30 lg:hidden transition-all duration-300 hover:scale-105"
+          className="p-1.5 sm:p-2 rounded-xl sm:rounded-2xl text-sky-muted hover:text-midnight-blue hover:bg-sky-light/30 lg:hidden transition-all duration-300 hover:scale-105 flex-shrink-0"
         >
-          <X className="h-6 w-6" />
+          <X className="h-5 w-5 sm:h-6 sm:w-6" />
         </button>
       </div>
       
       <nav className="sidebar-nav custom-scrollbar">
-        <ul className="space-y-2">
+        <ul className="space-y-1 sm:space-y-2">
           {navItems.filter(item => item.show).map((item) => {
             const Icon = item.icon;
             const active = isActive(item.path);
@@ -73,13 +73,13 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
               <li key={item.path}>
                 <Link 
                   to={item.path}
-                  className={`sidebar-nav-item group ${
+                  className={`sidebar-nav-item ${
                     active ? 'sidebar-nav-item-active' : 'sidebar-nav-item-inactive'
                   }`}
                   onClick={onClose}
                 >
-                  <Icon className="mr-4 h-6 w-6 flex-shrink-0" />
-                  <span className="truncate font-semibold">{item.label}</span>
+                  <Icon className="mr-2 sm:mr-3 lg:mr-4 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
+                  <span className="truncate font-semibold text-xs sm:text-sm">{item.label}</span>
                 </Link>
               </li>
             );
@@ -87,16 +87,16 @@ const Sidebar: React.FC<SidebarProps> = ({ onClose }) => {
         </ul>
       </nav>
       
-      <div className="p-6 border-t border-sky-light/30 mt-auto bg-gradient-to-r from-sky-light/10 to-transparent">
+      <div className="p-3 sm:p-4 lg:p-6 border-t border-sky-light/30 mt-auto bg-gradient-to-r from-sky-light/10 to-transparent">
         <button 
           onClick={() => {
             logout();
             onClose();
           }} 
-          className="w-full flex items-center px-6 py-4 text-sm font-semibold text-error-600 rounded-2xl hover:bg-error-50/80 transition-all duration-300 hover:shadow-soft hover:scale-105"
+          className="w-full flex items-center px-3 sm:px-4 lg:px-6 py-3 sm:py-3.5 lg:py-4 text-xs sm:text-sm font-semibold text-error-600 rounded-xl sm:rounded-2xl hover:bg-error-50/80 transition-all duration-300 hover:shadow-soft hover:scale-105"
         >
-          <LogOut className="mr-4 h-6 w-6" />
-          Cerrar sesión
+          <LogOut className="mr-2 sm:mr-3 lg:mr-4 h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 flex-shrink-0" />
+          <span className="truncate">Cerrar sesión</span>
         </button>
       </div>
     </aside>
