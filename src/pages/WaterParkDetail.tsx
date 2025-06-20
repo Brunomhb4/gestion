@@ -35,8 +35,17 @@ const WaterParkDetail: React.FC = () => {
   if (loading || !waterPark) {
     return (
       <DashboardLayout title="Detalles del Balneario">
-        <div className="flex justify-center items-center h-32 sm:h-48 lg:h-64">
-          <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-b-4 border-midnight-blue"></div>
+        <div className="flex justify-center items-center
+                        h-24
+                        xs:h-32
+                        sm:h-40
+                        md:h-48
+                        lg:h-64">
+          <div className="animate-spin rounded-full border-b-4 border-midnight-blue
+                          h-8 w-8
+                          xs:h-10 xs:w-10
+                          sm:h-12 sm:w-12
+                          md:h-16 md:w-16"></div>
         </div>
       </DashboardLayout>
     );
@@ -89,7 +98,7 @@ const WaterParkDetail: React.FC = () => {
     <DashboardLayout title={waterPark.name}>
       <div className="animate-fade-in">
         {/* Summary Stats */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-6 sm:mb-8 lg:mb-10">
+        <div className="responsive-grid mb-4 xs:mb-5 sm:mb-6 md:mb-8 lg:mb-10">
           {statsCards.map((stat, index) => {
             const Icon = stat.icon;
             return (
@@ -99,12 +108,36 @@ const WaterParkDetail: React.FC = () => {
                 style={{ animationDelay: `${index * 150}ms` }}
               >
                 <div className="flex items-center">
-                  <div className={`rounded-2xl sm:rounded-3xl bg-white/80 backdrop-blur-sm p-3 sm:p-4 lg:p-5 mr-3 sm:mr-4 lg:mr-6 shadow-soft border border-white/40 flex-shrink-0`}>
-                    <Icon className={`h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 ${stat.iconColor}`} />
+                  <div className={`bg-white/80 backdrop-blur-sm shadow-soft border border-white/40 flex-shrink-0
+                                   rounded-xl p-2 mr-2
+                                   xs:rounded-2xl xs:p-2.5 xs:mr-3
+                                   sm:p-3 sm:mr-4
+                                   md:rounded-3xl md:p-4 md:mr-5
+                                   lg:p-5 lg:mr-6`}>
+                    <Icon className={`${stat.iconColor}
+                                      h-4 w-4
+                                      xs:h-4 xs:w-4
+                                      sm:h-5 sm:w-5
+                                      md:h-6 md:w-6
+                                      lg:h-7 lg:w-7`} />
                   </div>
                   <div className="min-w-0 flex-1">
-                    <p className="text-xs sm:text-sm font-semibold text-sky-muted mb-1 sm:mb-2 truncate">{stat.title}</p>
-                    <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold ${stat.textColor} truncate`}>{stat.value.toLocaleString()}</h3>
+                    <p className="text-sky-muted truncate font-semibold
+                                  text-xs mb-0.5
+                                  xs:text-xs xs:mb-1
+                                  sm:text-sm sm:mb-1
+                                  md:text-sm md:mb-1.5
+                                  lg:text-base lg:mb-2">
+                      {stat.title}
+                    </p>
+                    <h3 className={`${stat.textColor} truncate font-bold
+                                    text-sm
+                                    xs:text-base
+                                    sm:text-lg
+                                    md:text-xl
+                                    lg:text-2xl`}>
+                      {stat.value.toLocaleString()}
+                    </h3>
                   </div>
                 </div>
               </div>
@@ -113,7 +146,7 @@ const WaterParkDetail: React.FC = () => {
         </div>
         
         {/* Charts */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 mb-6 sm:mb-8 lg:mb-10">
+        <div className="responsive-grid-2 mb-4 xs:mb-5 sm:mb-6 md:mb-8 lg:mb-10">
           <DailyChart data={dailyStats} />
           <MonthlyChart data={monthlyStats} />
         </div>
