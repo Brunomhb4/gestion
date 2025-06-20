@@ -32,7 +32,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children, title }) =>
       {/* Main Content */}
       <div className="flex-1 flex flex-col overflow-hidden min-w-0">
         <Header title={title} toggleSidebar={toggleSidebar} />
-        <main className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6 xl:p-8 custom-scrollbar">
+        <main className="flex-1 overflow-y-auto custom-scrollbar responsive-padding">
           <div className="container mx-auto max-w-7xl">
             <div className="animate-fade-in">
               {children}

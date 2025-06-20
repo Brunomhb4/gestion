@@ -3,6 +3,33 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
+      screens: {
+        'xs': '375px',      // Small phones
+        'sm': '640px',      // Large phones
+        'md': '768px',      // Small tablets
+        'lg': '1024px',     // Large tablets/small laptops
+        'xl': '1280px',     // Laptops
+        '2xl': '1536px',    // Large screens
+        // Custom breakpoints for specific devices
+        'mobile-s': '320px',    // Small mobile
+        'mobile-m': '375px',    // Medium mobile
+        'mobile-l': '425px',    // Large mobile
+        'tablet': '768px',      // Tablet
+        'laptop': '1024px',     // Laptop
+        'laptop-l': '1440px',   // Large laptop
+        '4k': '2560px',         // 4K screens
+        // Orientation-based breakpoints
+        'portrait': {'raw': '(orientation: portrait)'},
+        'landscape': {'raw': '(orientation: landscape)'},
+        // Height-based breakpoints for better mobile experience
+        'h-sm': {'raw': '(max-height: 600px)'},
+        'h-md': {'raw': '(max-height: 800px)'},
+        'h-lg': {'raw': '(min-height: 800px)'},
+        // Aspect ratio breakpoints
+        'aspect-square': {'raw': '(aspect-ratio: 1/1)'},
+        'aspect-wide': {'raw': '(min-aspect-ratio: 16/9)'},
+        'aspect-tall': {'raw': '(max-aspect-ratio: 9/16)'},
+      },
       colors: {
         // Paleta de azules armoniosa
         'deep-navy': '#021024',      // Azul muy oscuro (casi negro)
@@ -99,12 +126,34 @@ export default {
       spacing: {
         '18': '4.5rem',
         '88': '22rem',
+        // Ultra fine-grained spacing for mobile
+        '0.25': '0.0625rem',
+        '0.75': '0.1875rem',
+        '1.25': '0.3125rem',
+        '1.75': '0.4375rem',
+        '2.25': '0.5625rem',
+        '2.75': '0.6875rem',
+        '3.25': '0.8125rem',
+        '3.75': '0.9375rem',
+        '4.25': '1.0625rem',
+        '4.75': '1.1875rem',
+        '5.25': '1.3125rem',
+        '5.75': '1.4375rem',
+        '6.25': '1.5625rem',
+        '6.75': '1.6875rem',
+        '7.25': '1.8125rem',
+        '7.75': '1.9375rem',
+        '8.25': '2.0625rem',
+        '8.75': '2.1875rem',
+        '9.25': '2.3125rem',
+        '9.75': '2.4375rem',
       },
       borderRadius: {
         'xl': '0.75rem',
         '2xl': '1rem',
         '3xl': '1.5rem',
         '4xl': '2rem',
+        '5xl': '2.5rem',
       },
       backdropBlur: {
         'xs': '2px',
@@ -113,6 +162,30 @@ export default {
         'soft': '0 2px 15px -3px rgba(2, 16, 36, 0.1), 0 4px 6px -2px rgba(2, 16, 36, 0.05)',
         'medium': '0 4px 25px -5px rgba(2, 16, 36, 0.15), 0 10px 10px -5px rgba(2, 16, 36, 0.04)',
         'large': '0 10px 40px -10px rgba(2, 16, 36, 0.25), 0 20px 25px -5px rgba(2, 16, 36, 0.1)',
+      },
+      fontSize: {
+        'xxs': ['0.625rem', { lineHeight: '0.75rem' }],
+        'xs': ['0.75rem', { lineHeight: '1rem' }],
+        'sm': ['0.875rem', { lineHeight: '1.25rem' }],
+        'base': ['1rem', { lineHeight: '1.5rem' }],
+        'lg': ['1.125rem', { lineHeight: '1.75rem' }],
+        'xl': ['1.25rem', { lineHeight: '1.75rem' }],
+        '2xl': ['1.5rem', { lineHeight: '2rem' }],
+        '3xl': ['1.875rem', { lineHeight: '2.25rem' }],
+        '4xl': ['2.25rem', { lineHeight: '2.5rem' }],
+        '5xl': ['3rem', { lineHeight: '1' }],
+        '6xl': ['3.75rem', { lineHeight: '1' }],
+      },
+      maxWidth: {
+        'xxs': '16rem',
+        'xs': '20rem',
+      },
+      minHeight: {
+        '4': '1rem',
+        '6': '1.5rem',
+        '8': '2rem',
+        '10': '2.5rem',
+        '12': '3rem',
       }
     },
   },

@@ -59,7 +59,7 @@ const SummaryCards: React.FC = () => {
   ];
   
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 xl:gap-10 mb-6 sm:mb-8 lg:mb-10 xl:mb-12">
+    <div className="responsive-grid mb-4 xs:mb-5 sm:mb-6 md:mb-8 lg:mb-10 xl:mb-12">
       {cards.map((card, index) => {
         const Icon = card.icon;
         return (
@@ -69,14 +69,38 @@ const SummaryCards: React.FC = () => {
             style={{ animationDelay: `${index * 150}ms` }}
           >
             <div className="flex items-center">
-              <div className={`rounded-2xl sm:rounded-3xl ${card.iconBg} p-3 sm:p-4 lg:p-5 shadow-soft border border-white/20 backdrop-blur-sm flex-shrink-0`}>
-                <Icon className="h-5 w-5 sm:h-6 sm:w-6 lg:h-7 lg:w-7 text-midnight-blue" />
+              <div className={`shadow-soft border border-white/20 backdrop-blur-sm flex-shrink-0 ${card.iconBg}
+                               rounded-xl p-2
+                               xs:rounded-2xl xs:p-2.5
+                               sm:rounded-2xl sm:p-3
+                               md:rounded-3xl md:p-4
+                               lg:rounded-3xl lg:p-5`}>
+                <Icon className="text-midnight-blue
+                                 h-4 w-4
+                                 xs:h-4 xs:w-4
+                                 sm:h-5 sm:w-5
+                                 md:h-6 md:w-6
+                                 lg:h-7 lg:w-7" />
               </div>
-              <div className="ml-3 sm:ml-4 lg:ml-6 flex-1 min-w-0">
-                <p className={`text-xs sm:text-sm font-semibold ${card.subTextColor} truncate mb-1 sm:mb-2`}>
+              <div className="min-w-0 flex-1
+                              ml-2
+                              xs:ml-3
+                              sm:ml-4
+                              lg:ml-6">
+                <p className={`${card.subTextColor} truncate font-semibold
+                               text-xs mb-0.5
+                               xs:text-xs xs:mb-1
+                               sm:text-sm sm:mb-1
+                               md:text-sm md:mb-1.5
+                               lg:text-base lg:mb-2`}>
                   {card.title}
                 </p>
-                <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold ${card.textColor} truncate`}>
+                <h3 className={`${card.textColor} truncate font-bold
+                                text-sm
+                                xs:text-base
+                                sm:text-lg
+                                md:text-xl
+                                lg:text-2xl`}>
                   {card.value}
                 </h3>
               </div>

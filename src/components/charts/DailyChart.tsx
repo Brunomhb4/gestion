@@ -24,19 +24,77 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
     })
   }));
 
+  // Responsive configuration based on screen size
+  const getResponsiveConfig = () => {
+    const width = typeof window !== 'undefined' ? window.innerWidth : 1024;
+    
+    if (width < 375) {
+      return {
+        margin: { top: 5, right: 5, left: 0, bottom: 0 },
+        fontSize: 8,
+        strokeWidth: 1.5,
+        hideYAxis: true,
+        hideXAxisTicks: true
+      };
+    } else if (width < 640) {
+      return {
+        margin: { top: 8, right: 8, left: 0, bottom: 0 },
+        fontSize: 9,
+        strokeWidth: 2,
+        hideYAxis: true,
+        hideXAxisTicks: false
+      };
+    } else if (width < 768) {
+      return {
+        margin: { top: 10, right: 15, left: 0, bottom: 0 },
+        fontSize: 10,
+        strokeWidth: 2,
+        hideYAxis: false,
+        hideXAxisTicks: false
+      };
+    } else if (width < 1024) {
+      return {
+        margin: { top: 10, right: 20, left: 0, bottom: 0 },
+        fontSize: 11,
+        strokeWidth: 2.5,
+        hideYAxis: false,
+        hideXAxisTicks: false
+      };
+    } else {
+      return {
+        margin: { top: 10, right: 30, left: 0, bottom: 0 },
+        fontSize: 12,
+        strokeWidth: 3,
+        hideYAxis: false,
+        hideXAxisTicks: false
+      };
+    }
+  };
+
+  const config = getResponsiveConfig();
+
   return (
-    <div className="card h-64 sm:h-80 lg:h-96 floating-card">
-      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold gradient-text mb-4 sm:mb-6 lg:mb-8">Ventas Semanales</h3>
+    <div className="card floating-card
+                    h-48
+                    xs:h-56
+                    sm:h-64
+                    md:h-72
+                    lg:h-80
+                    xl:h-96">
+      <h3 className="gradient-text font-bold
+                     text-sm mb-3
+                     xs:text-base xs:mb-4
+                     sm:text-lg sm:mb-4
+                     md:text-xl md:mb-5
+                     lg:text-2xl lg:mb-6
+                     xl:text-2xl xl:mb-8">
+        Ventas Semanales
+      </h3>
       
       <ResponsiveContainer width="100%" height="85%">
         <AreaChart
           data={formattedData}
-          margin={{ 
-            top: 10, 
-            right: window.innerWidth < 640 ? 10 : 30, 
-            left: 0, 
-            bottom: 0 
-          }}
+          margin={config.margin}
         >
           <defs>
             <linearGradient id="colorTickets" x1="0" y1="0" x2="0" y2="1">
@@ -50,38 +108,51 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
           </defs>
           <XAxis 
             dataKey="formattedDate" 
-            tick={{ fontSize: window.innerWidth < 640 ? 10 : 12, fill: '#1B3B6F', fontWeight: 600 }}
+            tick={{ 
+              fontSize: config.fontSize, 
+              fill: '#1B3B6F', 
+              fontWeight: 600 
+            }}
             axisLine={false}
             tickLine={false}
+            hide={config.hideXAxisTicks}
           />
           <YAxis 
             yAxisId="left"
             orientation="left"
-            tick={{ fontSize: window.innerWidth < 640 ? 10 : 12, fill: '#1B3B6F', fontWeight: 600 }}
+            tick={{ 
+              fontSize: config.fontSize, 
+              fill: '#1B3B6F', 
+              fontWeight: 600 
+            }}
             axisLine={false}
             tickLine={false}
-            hide={window.innerWidth < 640}
+            hide={config.hideYAxis}
           />
           <YAxis 
             yAxisId="right"
             orientation="right"
-            tick={{ fontSize: window.innerWidth < 640 ? 10 : 12, fill: '#1B3B6F', fontWeight: 600 }}
+            tick={{ 
+              fontSize: config.fontSize, 
+              fill: '#1B3B6F', 
+              fontWeight: 600 
+            }}
             domain={[0, 'dataMax + 5000']}
             axisLine={false}
             tickLine={false}
-            hide={window.innerWidth < 640}
+            hide={config.hideYAxis}
           />
           <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#7DA0CA" opacity={0.4} />
           <Tooltip 
             contentStyle={{ 
               backgroundColor: 'rgba(255, 255, 255, 0.95)', 
               border: '2px solid #C1E8FF',
-              borderRadius: window.innerWidth < 640 ? '12px' : '16px',
+              borderRadius: typeof window !== 'undefined' && window.innerWidth < 640 ? '12px' : '16px',
               color: '#021024',
               backdropFilter: 'blur(12px)',
               boxShadow: '0 10px 40px rgba(2, 16, 36, 0.15)',
               fontWeight: 600,
-              fontSize: window.innerWidth < 640 ? '12px' : '14px'
+              fontSize: config.fontSize
             }}
           />
           <Area 
@@ -90,7 +161,7 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
             dataKey="tickets" 
             name="Tickets"
             stroke="#1B3B6F" 
-            strokeWidth={window.innerWidth < 640 ? 2 : 3}
+            strokeWidth={config.strokeWidth}
             fillOpacity={1} 
             fill="url(#colorTickets)" 
           />
@@ -100,7 +171,7 @@ const DailyChart: React.FC<DailyChartProps> = ({ data }) => {
             dataKey="revenue" 
             name="Ingresos ($)"
             stroke="#5483B3" 
-            strokeWidth={window.innerWidth < 640 ? 2 : 3}
+            strokeWidth={config.strokeWidth}
             fillOpacity={1} 
             fill="url(#colorRevenue)" 
           />
